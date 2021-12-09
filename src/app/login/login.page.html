@@ -3,7 +3,7 @@
     <img src="assets/img/logo.png" alt="">
   </figure>
   <form [formGroup]="loginForm" (ngSubmit)="loginUser(loginForm.value)">
-    <ion-item class="ion-padding">
+    <ion-item>
       <ion-label>Email</ion-label>
       <ion-input formControlName="email"></ion-input>
     </ion-item>
@@ -15,7 +15,7 @@
         </div>
       </ng-container>
     </div>
-    <ion-item class="ion-padding">
+    <ion-item>
       <ion-label>Password</ion-label>
       <ion-input type="password"  formControlName="password"></ion-input>
     </ion-item>

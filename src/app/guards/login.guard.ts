@@ -14,7 +14,7 @@ export class LoginGuard implements CanActivate {
     private router: Router,
   ) { }
   async canActivate() {
-    this.storage.create();
+    await this.storage.create();
     const isUserLoggegIn = await this.storage.get('isUserLoggegIn');
       if (isUserLoggegIn) {
         return true;

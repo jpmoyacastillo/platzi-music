@@ -44,12 +44,12 @@ export class LoginPage implements OnInit {
   ngOnInit() {
   }
 
-  loginUser(credentials) {
+  async loginUser(credentials) {
+    await this.storage.create();
     this.authService.loginUser(credentials).then(res=>{
       this.errorMessage = '';
-      this.storage.create();
       this.storage.set('isUserLoggegIn', true);
-      this.navCtrl.navigateForward('/home');
+      this.navCtrl.navigateForward('menu/home');
     }).catch(err=>{
       this.errorMessage = err;
     });
