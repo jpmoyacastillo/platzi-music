@@ -3,11 +3,11 @@
     <img src="assets/img/logo.png" alt="">
   </figure>
   <form [formGroup]="loginForm" (ngSubmit)="loginUser(loginForm.value)">
-    <ion-item>
+    <ion-item class="ion-padding">
       <ion-label>Email</ion-label>
       <ion-input formControlName="email"></ion-input>
     </ion-item>
-    <div class="validation-error">
+    <div class="ion-padding validation-error">
       <ng-container *ngFor="let validation of validationMessages.email">
         <div  *ngIf="loginForm.get('email').hasError(validation.type) && 
                       (loginForm.get('email').dirty || loginForm.get('email').touched)">
@@ -15,11 +15,11 @@
         </div>
       </ng-container>
     </div>
-    <ion-item>
+    <ion-item class="ion-padding">
       <ion-label>Password</ion-label>
       <ion-input type="password"  formControlName="password"></ion-input>
     </ion-item>
-    <div class="validation-error">
+    <div class="ion-padding validation-error">
       <ng-container *ngFor="let validation of validationMessages.password">
         <div  *ngIf="loginForm.get('password').hasError(validation.type) && 
                       (loginForm.get('password').dirty || loginForm.get('password').touched)">
@@ -28,12 +28,12 @@
       </ng-container>
     </div>
     {{ errorMessage }}
-    <ion-button expand="full" shape="round" color="success" [disabled]="!loginForm.valid" type="submit">
+    <ion-button class="ion-padding" expand="full" shape="round" color="success" [disabled]="!loginForm.valid" type="submit">
       Login
     </ion-button>
   </form>
 </ion-content>
 <ion-footer class="ion-text-center">
-  <ion-button expand="full" shape="round" fill="outline" color="success"
+  <ion-button (click)="goToRegister()" expand="full" shape="round" fill="outline" color="success"
   >Click para registrar</ion-button>
 </ion-footer>
