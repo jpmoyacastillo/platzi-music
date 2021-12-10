@@ -6,7 +6,7 @@
   </ion-toolbar>
 </ion-header> -->
 
-<ion-content [fullscreen]="true">
+<ion-content class="ion-padding" [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
       <ion-buttons class="ion-padding" slot="end">
@@ -15,5 +15,34 @@
     </ion-toolbar>
   </ion-header>
 
-  <p>Este es el home y está vacío</p>
+  <h1 class="ion-padding-start">Artistas</h1>
+  <ion-slides [options]="slideOps" *ngIf="artists.length">
+    <ion-slide  *ngFor="let artist of artists">
+      <ion-avatar>
+        <img [src]="artist.images[0].url" alt="">
+        <span>{{artist.name}}</span>
+      </ion-avatar>
+    </ion-slide>
+  </ion-slides>
+
+  <h1 class="ion-padding-start">Albums</h1>
+  <ion-slides [options]="slideOps" *ngIf="albums.length">
+    <ion-slide  *ngFor="let album of albums">
+      <ion-avatar class="square-avatar">
+        <img [src]="album.images[0].url" alt="">
+        <span>{{album.name}}</span>
+      </ion-avatar>
+    </ion-slide>
+  </ion-slides>
+
+  <h1 class="ion-padding-start">Canciones</h1>
+  <ion-slides [options]="slideOps" *ngIf="songs.length">
+    <ion-slide  *ngFor="let song of songs">
+      <ion-avatar class="square-avatar">
+        <img [src]="song.images[0].url" alt="">
+        <span>{{song.name}}</span>
+      </ion-avatar>
+    </ion-slide>
+  </ion-slides>
+
 </ion-content>
