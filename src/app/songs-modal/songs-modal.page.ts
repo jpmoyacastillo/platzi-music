@@ -9,6 +9,7 @@ import { NavParams, ModalController } from '@ionic/angular';
 export class SongsModalPage {
   songs: any[];
   artist: string;
+  album: any[];
   constructor(
     private navParams: NavParams,
     private modalController: ModalController,

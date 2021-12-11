@@ -36,13 +36,29 @@ export class HomePage {
       this.albums = newReleases.albums.items.filter(e => e.album_type === 'album');
     });
   }
-  async showSongs(artist) {
+  async showSongsByArtist(artist) {
     const songs = await this.musicService.getArtistsTopTracks(artist.id);
     const modal = await this.modalController.create({
       component: SongsModalPage,
       componentProps: {
         songs: songs.tracks,
         artist: artist.name,
+      }
+    });
+
+    modal.onDidDismiss().then(dataReturn=> {
+      this.song = dataReturn.data;
+    });
+
+    return await modal.present();
+  }
+  async showSongsByAlbum(album) {
+    const songs = await this.musicService.getAlbumTracks(album.id);
+    const modal = await this.modalController.create({
+      component: SongsModalPage,
+      componentProps: {
+        songs: songs.items,
+        album: album.name,
       }
     });
 
