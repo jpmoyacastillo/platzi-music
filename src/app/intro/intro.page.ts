@@ -9,7 +9,7 @@ import { Storage } from '@ionic/storage-angular';
   styleUrls: ['./intro.page.scss'],
 })
 export class IntroPage implements OnInit {
-  slideOps = {
+  slideOpts = {
     initialSlide: 0,
     slidesPerView: 1,
     centeredSlides: true,
@@ -18,42 +18,39 @@ export class IntroPage implements OnInit {
 
   slides = [
     {
-    imageSrc: '../../assets/img/logo.png',
-    imageAlt: 'Platzi Music Logo',
-    title: 'Escucha tu música',
-    subTitle: 'EN CUALQUIER LUGAR',
-    description: 'Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Pellentesque in ipsum id orci porta dapibus.',
-    icon: 'play',
+      imageSrc: '../../assets/img/logo.png',
+      imageAlt: 'Platzi Music Logo',
+      title: 'Escucha tu música',
+      subTitle: 'EN CUALQUIER LUGAR',
+      description:
+        'Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Pellentesque in ipsum id orci porta dapibus.',
+      icon: 'play',
     },
     {
-    imageSrc: '../../assets/img/logo.png',
-    imageAlt: 'Platzi Music Logo',
-    title: 'Escucha tu música',
-    subTitle: 'EN CUALQUIER LUGAR',
-    description: 'Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Pellentesque in ipsum id orci porta dapibus.',
-    icon: 'play',
+      imageSrc: '../../assets/img/logo.png',
+      imageAlt: 'Platzi Music Logo',
+      title: 'Escucha tu música',
+      subTitle: 'EN CUALQUIER LUGAR',
+      description:
+        'Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Pellentesque in ipsum id orci porta dapibus.',
+      icon: 'play',
     },
     {
-    imageSrc: '../../assets/img/logo.png',
-    imageAlt: 'Platzi Music Logo',
-    title: 'Escucha tu música',
-    subTitle: 'EN CUALQUIER LUGAR',
-    description: 'Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Pellentesque in ipsum id orci porta dapibus.',
-    icon: 'play',
+      imageSrc: '../../assets/img/logo.png',
+      imageAlt: 'Platzi Music Logo',
+      title: 'Escucha tu música',
+      subTitle: 'EN CUALQUIER LUGAR',
+      description:
+        'Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Pellentesque in ipsum id orci porta dapibus.',
+      icon: 'play',
     },
-
   ];
-  constructor(
-    private router: Router,
-    private storage: Storage,
-  ) { }
-  finish(){
+  constructor(private router: Router, private storage: Storage) {}
+  finish() {
     //console.log('hola');
     this.storage.create();
     this.storage.set('isIntroShowed', true);
     this.router.navigateByUrl('/login');
   }
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

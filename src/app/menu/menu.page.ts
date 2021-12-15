@@ -8,15 +8,13 @@ import { Storage } from '@ionic/storage-angular';
   styleUrls: ['./menu.page.scss'],
 })
 export class MenuPage implements OnInit {
-
   constructor(
     private menu: MenuController,
     private navCtrl: NavController,
-    private storage: Storage,
-  ) { }
+    private storage: Storage
+  ) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   closeMenu() {
     this.menu.close();
@@ -25,5 +23,8 @@ export class MenuPage implements OnInit {
     this.storage.remove('isUserLoggegIn');
     this.navCtrl.navigateRoot('/login');
   }
-
+  goToSettings() {
+    this.navCtrl.navigateRoot('/menu/settings');
+    this.menu.close();
+  }
 }

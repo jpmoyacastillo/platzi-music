@@ -18,22 +18,34 @@ export class HomePage {
   songs: any[] = [];
   albums: any[] = [];
   artists: any[] = [];
-  song: any = {};
-  currentSong: any = {};
+  song: {
+    preview_url: string;
+    playing: boolean;
+    name: string;
+  } = {
+    preview_url: '',
+    playing: false,
+    name: '',
+  };
+  currentSong: HTMLAudioElement;
   newTime;
   //   playing: true,
   //   name: [],
   // };
   constructor(
     private musicService: PlatziMusicService,
-    private modalController: ModalController,
+    private modalController: ModalController
   ) {}
 
   ionViewDidEnter() {
-    this.musicService.getNewReleases().then(newReleases => {
+    this.musicService.getNewReleases().then((newReleases) => {
       this.artists = this.musicService.getArtists();
-      this.songs = newReleases.albums.items.filter(e => e.album_type === 'single');
-      this.albums = newReleases.albums.items.filter(e => e.album_type === 'album');
+      this.songs = newReleases.albums.items.filter(
+        (e) => e.album_type === 'single'
+      );
+      this.albums = newReleases.albums.items.filter(
+        (e) => e.album_type === 'album'
+      );
     });
   }
   async showSongsByArtist(artist) {
@@ -43,10 +55,10 @@ export class HomePage {
       componentProps: {
         songs: songs.tracks,
         artist: artist.name,
-      }
+      },
     });
 
-    modal.onDidDismiss().then(dataReturn=> {
+    modal.onDidDismiss().then((dataReturn) => {
       this.song = dataReturn.data;
     });
 
@@ -59,10 +71,10 @@ export class HomePage {
       componentProps: {
         songs: songs.items,
         album: album.name,
-      }
+      },
     });
 
-    modal.onDidDismiss().then(dataReturn=> {
+    modal.onDidDismiss().then((dataReturn) => {
       this.song = dataReturn.data;
     });
 
@@ -73,24 +85,24 @@ export class HomePage {
     this.currentSong = new Audio(this.song.preview_url);
     this.currentSong.play();
     this.currentSong.addEventListener('timeupdate', () => {
-      this.newTime = (this.currentSong.currentTime / this.currentSong.duration);
+      this.newTime = this.currentSong.currentTime / this.currentSong.duration;
     });
-    this.song.playing=true;
+    this.song.playing = true;
   }
   pause() {
     this.currentSong.pause();
-    this.song.playing=false;
+    this.song.playing = false;
   }
 
-  parseTime(time='0.00') {
-    if(time) {
+  parseTime(time: number) {
+    if (time) {
       const partTime = parseInt(time.toString().split('.')[0], 10);
-      let minutes = Math.floor(partTime/60).toString();
-      if(minutes.length === 1) {
+      let minutes = Math.floor(partTime / 60).toString();
+      if (minutes.length === 1) {
         minutes = '0' + minutes;
       }
-      let seconds = (partTime%60).toString();
-      if(seconds.length === 1) {
+      let seconds = (partTime % 60).toString();
+      if (seconds.length === 1) {
         seconds = '0' + seconds;
       }
       return minutes + ':' + seconds;
