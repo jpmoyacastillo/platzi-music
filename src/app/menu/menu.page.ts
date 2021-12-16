@@ -32,7 +32,7 @@ export class MenuPage implements OnInit {
     this.menu.close();
   }
   goToSports() {
-    //this.navCtrl.navigateRoot('/menu/sports');
+    this.navCtrl.navigateRoot('/menu/sports');
     this.menu.close();
   }
 }

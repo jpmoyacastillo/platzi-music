@@ -12,7 +12,12 @@ import { SongsModalPage } from './songs-modal/songs-modal.page';
 @NgModule({
   declarations: [AppComponent, SongsModalPage],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, IonicStorageModule.forRoot()],
+  imports: [
+    BrowserModule,
+    IonicModule.forRoot(),
+    AppRoutingModule,
+    IonicStorageModule.forRoot(),
+  ],
   // exports: [SongsModalPage],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
